@@ -3,6 +3,10 @@ import { Switch, Route } from "react-router-dom";
 
 import Header from "./Header";
 import Home from "../components/Home"
+import Study from "../components/Study";
+import CreateDeck from "../components/CreateDeck";
+import Deck from "../components/Deck";
+// import edit deck capabilities
 import NotFound from "./NotFound";
 
 
@@ -11,7 +15,7 @@ function Layout() {
     <>
       <Header />
       <div className="container">
-        {/* TODO: Implement the screen starting here */}
+        {/* Ref App() all routes here */}
         <Switch>
           <Route exact path="/" >
             <Home />
