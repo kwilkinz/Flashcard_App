@@ -2,7 +2,7 @@ import React from "react";
 
 function CreateDeck() {
     return (
-        <p>Create Deck</p>
+        <h1>Print Create Deck</h1>
     )
 }
 

@@ -211,6 +211,3 @@ The Edit Card screen has the following features:
 ---
 
 ### _Terms & Definitions_
-
-term
-: definition
