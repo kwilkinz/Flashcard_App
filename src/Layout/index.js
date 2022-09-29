@@ -6,6 +6,9 @@ import Home from "../components/Home"
 import Study from "../components/Study";
 import CreateDeck from "../components/CreateDeck";
 import Deck from "../components/Deck";
+import EditDeck from "../components/EditDeck";
+import AddCard from "../components/AddCard";
+import EditCard from "../components/EditCard";
 // import edit deck capabilities
 import NotFound from "./NotFound";
 
