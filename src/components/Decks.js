@@ -1,15 +1,20 @@
 import React from "react";
 import { deleteDeck } from "../utils/api/index";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+
 
 function Decks({ decks, setDecks }) {
+  const history = useHistory();
+  //const { deckId } = useParams();
+
   // Delete Handler Here
-  const handleDelete = (id) => {
+  async function handleDelete(id) {
     if (
       window.confirm("Delete this deck?\n\nYou will not be able to recover it.")
     ) {
       deleteDeck(id);
       setDecks(decks.filter((deck) => deck.id !== id));
+      history.push("/")
     }
   };
 
