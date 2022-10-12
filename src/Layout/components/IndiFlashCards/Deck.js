@@ -3,6 +3,7 @@ import { useHistory, useParams } from "react-router-dom";
 import { readDeck, deleteDeck } from "../../../utils/api";
 import NavBarDeck from "./NavBarDeck";
 import { Link } from "react-router-dom";
+import IndiCardList from "./IndiCardList";
 
 /* ===========================
 *            Parent : Home.js
@@ -72,7 +73,6 @@ function Deck() {
               <Link
                 to={`/decks/${deckId}/cards/new`}
                 className="btn btn-primary mx-1"
-                indiDecks={indiDecks}
               >
                 + Add Cards
               </Link>
@@ -84,15 +84,10 @@ function Deck() {
         </div>
       </div>
       <br />
-
-      <div>
-        <h2>Cards</h2>
-        <h5>Row or table here? 
-          going Front   Back and edit btn + trash
-        </h5>
-      </div>
+        <div>
+          <IndiCardList indiDecks={indiDecks}/>
+        </div>
     </div>
-    
   );
 }
 

@@ -55,11 +55,7 @@ function AddCard() {
 
       <div>
           <FormAddCard card={card} setCard={setCard}/>
-      </div>
-
-    
-
-      
+      </div> 
     </div>
   );
 }
