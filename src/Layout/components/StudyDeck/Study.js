@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { readDeck } from "../utils/api/index"
+import { readDeck } from "../../../utils/api/index"
 import DisplayIndiCard from "./DisplayIndiCards";
 import NavBarStudy from "./NavBarStudy";
+/* ===========================
+*            Parent : Home.js
+*            SubParent: This
+*           Children: 
+*              Displays ....  
 
-/* ==========================
-When clicked on Study. This should correlate 
-to the specific deck id that the user clicked on. 
+*  + NavBarStudy.js  (breadcrumbs)
+*  + NotEnoughCards.js (needs 3 cards)
+*  + DisplayIndiCard.js (individual cards shown)
 
-Study Screen Display 
- - NavBarStudy    (navigation)
- - NotEnoughCards (need 3 cards)
- - DisplayIndiCard (individual card show)
- ========================== */
+============================== */
 
 function Study() {
   // useState 

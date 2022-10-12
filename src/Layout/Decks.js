@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 /* ===========================
-*            Owner : Home.js
+*            Parent : Home.js
 *       Paints to the Home.js Scren: 
 
 *   +  useState from home in params Decks({})

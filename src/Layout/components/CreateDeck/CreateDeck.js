@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Breadcrumbs from "./Breadcrumbs";
-import { createDeck } from "../utils/api";
+import { createDeck } from "../../utils/api";
 import { Link, useHistory } from "react-router-dom";
 
 function CreateDeck() {
