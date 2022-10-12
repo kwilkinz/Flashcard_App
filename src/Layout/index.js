@@ -2,13 +2,13 @@ import React, { Fragment } from "react";
 import { Switch, Route } from "react-router-dom";
 
 import Header from "./Header";
-import Home from "./Home"
-import Study from "../components/Study";
-import CreateDeck from "../components/CreateDeck";
-import Deck from "../components/Deck";
-import EditDeck from "../components/EditDeck";
-import EditCard from "../components/EditCard";
-import AddCard from "../components/AddCard";
+import Home from "./Home";
+import Study from "./components/StudyDeck/Study";
+import CreateDeck from "./components/CreateDeck/CreateDeck"
+import Deck from "./components/IndiFlashCards/Deck";
+import EditDeck from "./components/IndiFlashCards/EditDeck";
+import EditCard from "./components/IndiFlashCards/EditCard";
+import AddCard from "./components/IndiFlashCards/AddCard";
 // import edit deck capabilities
 import NotFound from "./NotFound";
 

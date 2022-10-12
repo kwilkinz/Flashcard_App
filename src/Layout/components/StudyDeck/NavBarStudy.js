@@ -1,6 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+/* ===========================
+*            Parent : Home.js
+*            SubParent: Study.js (paints on)
+*           Children:  none
+*              Displays ....  
+
+*  + params {deckId, deck} 
+*  + Link to Home Screen 
+*  + Link to indi deck curently on 
+*  + Bootstrap the current page on
+
+============================== */
 function NavBarStudy({ deckId, deck }) {
   return (
     <div>

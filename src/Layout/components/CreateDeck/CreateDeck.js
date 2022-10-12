@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Breadcrumbs from "./Breadcrumbs";
-import { createDeck } from "../../utils/api";
+import { createDeck } from "../../../utils/api";
 import { Link, useHistory } from "react-router-dom";
 
 function CreateDeck() {
@@ -51,7 +51,7 @@ function CreateDeck() {
                 name="name"
                 onChange={handleChange}
                 value={newDeck.name}
-                placeholder="Deck Name"
+                placeholder="  Deck Name"
                 style={{ width: "100%" }}
               />
             </div>
@@ -68,7 +68,7 @@ function CreateDeck() {
                 onChange={handleChange}
                 value={newDeck.description}
                 style={{ width: "100%", marginBottom: "10px" }}
-                placeholder="Brief description of the deck"
+                placeholder="  Brief description of the deck"
               />
               <br />
             </div>

@@ -1,10 +1,9 @@
 import React from "react";
-import NavBarDeck from "./NavBarDeck";
 
 //** Deck Screen Displays ALL of the INFO about the deck
 
 
-function Deck({ deck }) {
+function Deck() {
   // useState / useHistory 
 
 
@@ -19,7 +18,6 @@ function Deck({ deck }) {
   // web page paint
     return (
     <div>
-      <NavBarDeck deck={deck}/>
       <p>When clicking on a specific deck that card will appear</p>
     </div>
   );

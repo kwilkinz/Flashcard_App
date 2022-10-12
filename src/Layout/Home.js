@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 // List of all the decks & delete functionality 
 import { deleteDeck, listDecks } from "../utils/api"
-import Decks from "./Decks";
+import Decks from "./components/Decks";
 
 /* ===========================
 *             Parent: This
