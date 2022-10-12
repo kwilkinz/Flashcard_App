@@ -1,13 +1,17 @@
 import React from "react";
 import { useParams, Link } from "react-router-dom";
 
+/* ===========================
+*            Parent : Home.js
+*            SubParent: Study.js (paints on)
+*           Children:  none
+*              Displays ....  
 
-/* ========================== 
-Displayed: Within DisplayIndiCard() 
+*  + params (deck, cards)
+*  + prints you dont have enough cards
+*  + Link to add Cards.js btn 
+============================== */
 
-^ below is if user only has 2 cards in deck,
-needs to create 3
-========================== */
 function NotEnoughCards({ deck, cards }) {
   const { deckId } = useParams();
 

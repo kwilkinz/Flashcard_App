@@ -4,7 +4,7 @@ import NotEnoughCards from "./NotEnoughCards";
 /* ===========================
 *            Parent : Home.js
 *            SubParent: Study.js (paints on)
-*           Children:  none
+*           Children:  NotEnoughCards.js
 *              Displays ....  
 
 *  + params (deckId deck)
@@ -36,7 +36,7 @@ function DisplayIndiCard({ deckId, deck }) {
       setCards((card) => card + 1);
     }
   };
-  //console.log("Length " + (cards.length - 1))
+  //console.log(cards.length)
   //console.log("card Length-> " + (cards.length))
   if (cards.length <= 2) {
     return (

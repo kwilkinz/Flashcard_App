@@ -1,7 +1,7 @@
 import React from "react"
 import { Link } from "react-router-dom";
 
-function NavBarDeck({deck}){
+function NavBarDeck({ indiDecks }){
 
 
     return (
@@ -10,7 +10,7 @@ function NavBarDeck({deck}){
                 <li className="breadcrumb-item">
                     <Link to="/">Home</Link>
                 </li>
-                <li className="breadcrumb-item active">fix deck name
+                <li className="breadcrumb-item active">{indiDecks.name}
                 </li>
             </ol>
         </nav>
