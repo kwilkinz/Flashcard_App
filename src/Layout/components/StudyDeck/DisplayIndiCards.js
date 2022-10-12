@@ -17,17 +17,16 @@ import NotEnoughCards from "./NotEnoughCards";
 ============================== */
 
 function DisplayIndiCard({ deckId, deck }) {
-  // multiple if else statements & 2 return statements
   const history = useHistory();
-  const { cards } = deck;
-  // useState ->
+
   const [card, setCards] = useState(0);
   const [flip, setFlip] = useState(true);
 
-  // Handle Next Btn ->
+
+ // Handle Next Btn ->
   const handleNextBtn = () => {
     setFlip(true);
-    if (card === cards.length) {
+    if (card === deck.card.length) {
       window.confirm("Click OK to restart the deck.")
         ? setCards(() => 0)
         : history.push("/");
@@ -36,37 +35,67 @@ function DisplayIndiCard({ deckId, deck }) {
       setCards((card) => card + 1);
     }
   };
-  //console.log(cards.length)
-  //console.log("card Length-> " + (cards.length))
-  if (cards.length <= 2) {
-    return (
-      <div>
-        <NotEnoughCards 
-          cards={cards} 
-          deck={deck}
-        />
-      </div>
-    );
-  } else {
-    return (
-      <div>
-        <h2>{deck.name}: Study</h2>
-        <div className="card">
-          <div className="card-body">
-            <div className="d-flex justify-content-between">
-              <h5 className="card-title">
-                {`Card ${card + 1} of ${cards.length}`}
-              </h5>
-            </div>
 
-            <p className="card-text">{flip ? cards[card].front : cards[card].back}</p>
-            <button className="btn btn-secondary mx-2" onClick={() => setFlip(!flip)}>Flip</button>
-            {!flip ? <button className="btn btn-primary" onClick={handleNextBtn}>Next</button>: null}
+  
+
+
+  return (
+    <div>
+      {deck.cards && (
+        <div className="row justify-content-center">
+          <div className="col">
+            <div className="card">
+              <div className="card-body">
+                {deck.cards.length <= 2 ? (
+                  <div>
+                    <NotEnoughCards card={card} deck={deck} />
+                  </div>
+                ) : (  
+                  <div>
+                    <h2>Study: {deck.name}</h2>
+                    <div className="card">
+                      <div className="card-body">
+                        
+                        <div className="d-flex justify-content-between">
+                          
+                          <h5 className="card-title">
+                            {`Card ${card + 1} of ${deck.cards.length}`}
+                            
+                          </h5>
+                          
+                        </div>
+                       
+                        <p className="card-text">
+                          {flip ? deck.cards[card].front : deck.cards[card].back}
+                        </p>
+                        
+                        <button
+                          className="btn btn-secondary mx-2"
+                          onClick={() => setFlip(!flip)}
+                        >
+                          Flip
+                        </button>
+                      
+                        {!flip ? (
+                          <button
+                            className="btn btn-primary"
+                            onClick={handleNextBtn}
+                          >
+                            Next
+                          </button>
+                        ) : null}
+                        
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    );
-  }
+      )}
+    </div>
+  );
 }
 
 export default DisplayIndiCard;

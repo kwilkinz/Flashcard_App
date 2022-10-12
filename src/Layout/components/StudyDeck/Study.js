@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { readDeck } from "../../../utils/api/index";
 import DisplayIndiCard from "./DisplayIndiCards";
 import NavBarStudy from "./NavBarStudy";
+
 /* ===========================
 *            Parent : Home.js
 *            SubParent: This
@@ -47,7 +48,7 @@ function Study() {
       </div>
 
       <div>
-        <DisplayIndiCard deckId={deckId} deck={deck} />
+        <DisplayIndiCard deckId={deckId} deck={deck}/>
       </div>
     </div>
   );

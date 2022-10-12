@@ -12,14 +12,14 @@ import { useParams, Link } from "react-router-dom";
 *  + Link to add Cards.js btn 
 ============================== */
 
-function NotEnoughCards({ deck, cards }) {
+function NotEnoughCards({ deck }) {
   const { deckId } = useParams();
 
   return (
     <div>
       <h2>{deck.name}: Study</h2>
       <h4>Not enough cards.</h4>
-      <p>You need at least 3 cards to study. There are {cards.length} cards in this deck.</p>
+      <p>You need at least 3 cards to study. There are {deck.cards.length} cards in this deck.</p>
       <Link to={`/decks/${deckId}/cards/new`} className="btn btn-primary mx-1">
         + Add Cards
       </Link>
