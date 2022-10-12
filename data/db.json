@@ -23,6 +23,18 @@
       "back": "Renders the first matching child <Route> ",
       "deckId": 2,
       "id": 5
+    },
+    {
+      "front": "New ",
+      "back": "Page",
+      "deckId": 2,
+      "id": 6
+    },
+    {
+      "front": "this is 4th card",
+      "back": "yup",
+      "deckId": 2,
+      "id": 7
     }
   ]
 }

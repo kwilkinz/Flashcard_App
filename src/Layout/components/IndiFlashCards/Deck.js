@@ -72,6 +72,7 @@ function Deck() {
               <Link
                 to={`/decks/${deckId}/cards/new`}
                 className="btn btn-primary mx-1"
+                indiDecks={indiDecks}
               >
                 + Add Cards
               </Link>
