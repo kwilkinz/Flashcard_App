@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import { Switch, Route } from "react-router-dom";
 
 import Header from "./Header";
-import Home from "../components/Home"
+import Home from "./Home"
 import Study from "../components/Study";
 import CreateDeck from "../components/CreateDeck";
 import Deck from "../components/Deck";

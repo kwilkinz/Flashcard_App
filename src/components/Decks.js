@@ -1,70 +1,51 @@
 import React from "react";
-import { deleteDeck } from "../utils/api/index";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 
+/* ===========================
+*            Owner : Home.js
+*       Paints to the Home.js Scren: 
 
-function Decks({ decks, setDecks }) {
-  const history = useHistory();
-  //const { deckId } = useParams();
+*   +  useState from home in params Decks({})
+*   +  HandleDelete in params ({})
+*   +  Links to create new deck "/decks/new" 
+*   +  Link to View {`/decks/${deck.id}`}
+*   +  Link to Study {`/decks/${deck.id}/study`}
+*   +  Delete btn that calls handleDelete() 
 
-  // Delete Handler Here
-  async function handleDelete(id) {
-    if (
-      window.confirm("Delete this deck?\n\nYou will not be able to recover it.")
-    ) {
-      deleteDeck(id);
-      setDecks(decks.filter((deck) => deck.id !== id));
-      history.push("/")
-    }
-  };
+============================== */  
 
-  /* Correlates to the Home Page. This is 
-the All Decks being listed Function. 
+function Decks({ decks, handleDelete }) {
 
-TODOS: 
-* Map through all the deck.id 
-* Build a card using classNames & bootstrap
-* Produce deck length
-* Produce: deck name
-* Produce: deck description
-* Create Link to a certain deck w/ id
-
-*/
   return (
     <div>
+      <div> 
+        <Link to="/decks/new" className="btn btn-secondary m-0 mb-2">
+          + Create Deck
+        </Link>
+      </div>
       {/*here map through decks */}
       {decks.map((deck) => (
         <div key={deck.id} style={{ marginBottom: "20px" }}>
           <div className="card">
             <div className="card-body">
-              <p style={{float: "right", color: "gray"}}>{deck.cards.length} cards</p>
-              <h2 style={{color: "black"}}>{deck.name}</h2>
-              <p style={{color: "black"}}>{deck.description}</p>
+              <div className="d-flex justify-content-between">
+                <h2 className="card-title">{deck.name}</h2>
+                <p>{deck.cards.length} cards</p>
+              </div>
+              <p className="card-text">{deck.description}</p>
               
-              <Link to="/decks/:deckId">
-                <button
-                  type="button"
-                  className="btn btn-secondary"
-                  style={{ marginRight: "10px" }}
-                >
-                  View
-                </button>
+              <Link to={`/decks/${deck.id}`} className="btn btn-secondary mx-1">
+                View
               </Link>
 
-              <Link to="/decks/:deckId/study">
-                <button
-                  type="button"
-                  className="btn btn-primary"
-                >
-                  Study
-                </button>
+              <Link to={`/decks/${deck.id}/study`} className="btn btn-primary mx-1">
+                Study
               </Link>
 
               <button
-                type="button"
                 className="btn btn-danger"
                 style={{ float: "right" }}
-                onClick={() => handleDelete(deck.id)}
+                onClick={() => handleDelete(deck)}
               >
                 Delete
               </button>

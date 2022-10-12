@@ -41,15 +41,16 @@ function Study() {
 
   // WebPage Print
   return (
-    <div className="col">
-      <div>
-      {/* Breadcrumbs navagation bar Study */}
-      <NavBarStudy deckId={deckId} deck={deck}/>
-    </div>
-    <div>
-      <DisplayIndiCard deckId={deckId} deck={deck} />
-    </div>
-    </div>
+    <h1>Study page</h1>
+    // <div className="col">
+    //   <div>
+    //   {/* Breadcrumbs navagation bar Study */}
+    //   <NavBarStudy deckId={deckId} deck={deck}/>
+    // </div>
+    // <div>
+    //   <DisplayIndiCard deckId={deckId} deck={deck} />
+    // </div>
+    // </div>
   );
 }
 
