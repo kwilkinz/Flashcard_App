@@ -14,6 +14,7 @@ import { Link } from "react-router-dom";
 
 ============================== */
 function NavBarStudy({ deckId, deck }) {
+  
   return (
     <div>
       <nav aria-label="breadcrumb">

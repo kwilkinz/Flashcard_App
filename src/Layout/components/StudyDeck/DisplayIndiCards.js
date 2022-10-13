@@ -13,20 +13,22 @@ import NotEnoughCards from "./NotEnoughCards";
 *  + After Final card, the screen shows a msg
 *  + If user doesnt restart deck, user goes to homescreen
 *  + Study deck with 2 or less cards go to not enough cards.js
+* //console.log(deckCards) // front and back + id
+* //console.log(deckCards.length) // gets you #
 
 ============================== */
 
-function DisplayIndiCard({ deckId, deck }) {
-  const history = useHistory();
+function DisplayIndiCard({ deckId, deck, deckCards }) {
 
+  const history = useHistory();
   const [card, setCards] = useState(0);
   const [flip, setFlip] = useState(true);
 
 
- // Handle Next Btn ->
+ // Handle Next Btn -> appears after 1st flip & -1 is last card
   const handleNextBtn = () => {
     setFlip(true);
-    if (card === deck.card.length) {
+    if (card === deckCards.length -1) {
       window.confirm("Click OK to restart the deck.")
         ? setCards(() => 0)
         : history.push("/");
@@ -36,8 +38,9 @@ function DisplayIndiCard({ deckId, deck }) {
     }
   };
 
-  
 
+
+// ============== UI PAGE ============
 
   return (
     <div>

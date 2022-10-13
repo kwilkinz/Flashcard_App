@@ -111,12 +111,12 @@ function EditDeck() {
             />
             <br />
 
-            <Link to={`/decks/${deckId}`} class="btn btn-secondary mr-3">
+            <Link to={`/decks/${deckId}`} className="btn btn-secondary mr-3">
               Cancel
             </Link>
 
             <button
-              class="btn btn-primary"
+              className="btn btn-primary"
               type="submit"
               onClick={handleSubmit}
             >

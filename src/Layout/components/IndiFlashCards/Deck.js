@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { useHistory, useParams } from "react-router-dom";
-import { readDeck, deleteDeck } from "../../../utils/api";
-import NavBarDeck from "./NavBarDeck";
-import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import { readDeck } from "../../../utils/api";
 import IndiCardList from "./IndiCardList";
 import IndiTopCard from "./IndiTopCard";
 
@@ -22,7 +20,7 @@ function Deck() {
   // useState / useHistory
   const [indiDecks, setIndiDecks] = useState([]);
   const { deckId } = useParams();
-  const history = useHistory();
+
 
   // useEffect
   useEffect(() => {
@@ -40,15 +38,7 @@ function Deck() {
     return () => controller.abort();
   }, [deckId]);
 
-  // // Delete Handler - window asking to delete the deck, then if so delete
-  // async function handleDelete(deck) {
-  //   if (
-  //     window.confirm("Delete this card?\n\nYou will not be able to recover it.")
-  //   ) {
-  //     history.go(0);
-  //     return await deleteDeck(deck.id);
-  //   }
-  // }
+
 
   //? ===========================
 

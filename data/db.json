@@ -14,6 +14,11 @@
       "name": "React 101",
       "description": "Professor March",
       "id": 9
+    },
+    {
+      "name": "React Hooks - Types",
+      "description": "Will be going through useState, useHistory, etc.",
+      "id": 10
     }
   ],
   "cards": [

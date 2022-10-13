@@ -39,6 +39,7 @@ function Study() {
     return () => controller.abort();
   }, [deckId]);
 
+  //console.log(deck.cards.length)
   // WebPage Print
   return (
     <div className="col">
@@ -48,7 +49,7 @@ function Study() {
       </div>
 
       <div>
-        <DisplayIndiCard deckId={deckId} deck={deck}/>
+        <DisplayIndiCard deckId={deckId} deck={deck} deckCards={deck.cards} />
       </div>
     </div>
   );

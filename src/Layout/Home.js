@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 
 // List of all the decks & delete functionality 
 import { deleteDeck, listDecks } from "../utils/api"
-import Decks from "./components/Decks";
+import Decks from "./Components/Decks";
 
 /* ===========================
 *             Parent: This
