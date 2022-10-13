@@ -55,16 +55,12 @@ function DisplayIndiCard({ deckId, deck }) {
                     <h2>Study: {deck.name}</h2>
                     <div className="card">
                       <div className="card-body">
-                        
                         <div className="d-flex justify-content-between">
-                          
                           <h5 className="card-title">
                             {`Card ${card + 1} of ${deck.cards.length}`}
-                            
                           </h5>
-                          
                         </div>
-                       
+                        
                         <p className="card-text">
                           {flip ? deck.cards[card].front : deck.cards[card].back}
                         </p>

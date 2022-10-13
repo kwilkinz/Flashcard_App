@@ -4,11 +4,12 @@ import { readDeck, deleteDeck } from "../../../utils/api";
 import NavBarDeck from "./NavBarDeck";
 import { Link } from "react-router-dom";
 import IndiCardList from "./IndiCardList";
+import IndiTopCard from "./IndiTopCard";
 
 /* ===========================
 *            Parent : Home.js
 *            SubParent: Decks.js
-*           Children: EditDeck
+*  Children: EditDeck, AddCard, IndiCardList
 *              Displays ....  
 
 *  + all the information about each decks. 
@@ -39,56 +40,35 @@ function Deck() {
     return () => controller.abort();
   }, [deckId]);
 
-  // Delete Handler - window asking to delete the deck, then if so delete
-  async function handleDelete(deck) {
-    if (
-      window.confirm("Delete this card?\n\nYou will not be able to recover it.")
-    ) {
-      history.go(0);
-      return await deleteDeck(deck.id);
-    }
-  }
+  // // Delete Handler - window asking to delete the deck, then if so delete
+  // async function handleDelete(deck) {
+  //   if (
+  //     window.confirm("Delete this card?\n\nYou will not be able to recover it.")
+  //   ) {
+  //     history.go(0);
+  //     return await deleteDeck(deck.id);
+  //   }
+  // }
 
-  // web page paint
-  return (
-    <div className="col">
-      <NavBarDeck indiDecks={indiDecks} />
-      <div className="card">
-        <div className="card-body">
-          <h4 className="card-title">{indiDecks.name}</h4>
-          <p className="card-text">{indiDecks.description}</p>
-          <div className="d-flex justify-content-between">
-            <div>
-              <Link to={`${deckId}/edit`} className="btn btn-secondary mx-1">
-                Edit
-              </Link>
+  //? ===========================
 
-              <Link
-                to={`/decks/${deckId}/study`}
-                className="btn btn-primary mx-1"
-              >
-                Study
-              </Link>
-
-              <Link
-                to={`/decks/${deckId}/cards/new`}
-                className="btn btn-primary mx-1"
-              >
-                + Add Cards
-              </Link>
-            </div>
-            <button onClick={handleDelete} className="btn btn-danger">
-              Delete
-            </button>
-          </div>
+  if (indiDecks && indiDecks.cards && indiDecks.cards.length === 0) {
+    return (
+      <div>
+        <IndiTopCard indiDecks={indiDecks} />
+        <div className="col">
+          <h2>You have no cards in this deck right now.</h2>
         </div>
       </div>
-      <br />
-        <div>
-          <IndiCardList indiDecks={indiDecks}/>
-        </div>
-    </div>
-  );
+    );
+  } else {
+    return (
+      <div>
+        <IndiTopCard indiDecks={indiDecks} />
+        <IndiCardList cardsArray={indiDecks.cards} />
+      </div>
+    );
+  }
 }
 
 export default Deck;

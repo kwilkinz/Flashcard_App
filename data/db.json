@@ -9,6 +9,11 @@
       "name": "React Hooks",
       "description": "With multiple hooks it's important to know what each mean and how to incorporate into your code. ",
       "id": 8
+    },
+    {
+      "name": "React 101",
+      "description": "Professor March",
+      "id": 9
     }
   ],
   "cards": [
@@ -31,9 +36,9 @@
       "id": 6
     },
     {
-      "front": "this is 4th card",
-      "back": "yup",
-      "deckId": 2,
+      "front": "This is flashcard 1",
+      "back": "Back of flashcard 1",
+      "deckId": 9,
       "id": 7
     }
   ]
