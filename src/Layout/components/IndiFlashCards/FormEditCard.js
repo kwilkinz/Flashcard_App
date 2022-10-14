@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { updateCard, readCard, readDeck } from "../../../utils/api/index";
+import { updateCard } from "../../../utils/api/index";
+import { readCard } from "../../../utils/api/index";
 import { Link } from "react-router-dom";
 import { useParams, useHistory } from "react-router-dom";
 
@@ -17,10 +18,11 @@ function FormEditCard({ deck }) {
   const initalForm = {
     front: "",
     back: "",
+    deckId: "",
+    id: "",
   };
 
   const [card, setCard] = useState(initalForm);
-  const [decks, setDecks] = useState(initalForm)
   const { deckId, cardId } = useParams();
   const history = useHistory();
 
@@ -30,9 +32,7 @@ useEffect(() => {
 
     const fetchCardData = async() => {
         try {
-            const responseDeck = await readDeck(deckId, controller.signal);
             const responseCard = await readCard(cardId, controller.signal);
-            setDecks(responseDeck)
             setCard(responseCard)
         } catch (error) {
             console.log(`FormEditCard ${error}`)
@@ -46,10 +46,17 @@ useEffect(() => {
 
 
   //TODO: with a form you need a handle change
-  const handleChange = ({ target }) => {
+  const handleFrontCardChange = ({ target }) => {
     setCard({
       ...card,
       [target.front]: target.value,
+    });
+  };
+
+  const handleBackCardChange = ({ target }) => {
+    setCard({
+      ...card,
+      [target.back]: target.value,
     });
   };
 
@@ -57,10 +64,20 @@ useEffect(() => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const controller = new AbortController();
-    const response = await updateCard({ ...card, front: card.front, back: card.back}, controller.signal);
+    await updateCard({ ...card, front: card.front, back: card.back}, controller.signal);
     history.push(`/decks/${deckId}`);
-    return response;
   };
+
+  //TODO: Find out if it is front or back
+  function cardFront() {
+    return card.front ? card.front : "";
+  }
+
+  function cardBack() {
+    return card.back ? card.back : "";
+  }
+
+
 
   return (
     <div>
@@ -73,8 +90,9 @@ useEffect(() => {
             type="textarea"
             name="front"
             rows="3"
-            onChange={handleChange}
-            value={card.front}
+            onChange={handleFrontCardChange}
+            value={cardFront()}
+            placeholder="Front side of Card"
             style={{ width: "100%" }}
           />
         </div>
@@ -87,8 +105,8 @@ useEffect(() => {
             type="textarea"
             name="back"
             rows="3"
-            onChange={handleChange}
-            value={card.back}
+            onChange={handleBackCardChange}
+            value={cardBack()}
             style={{ width: "100%" }}
           />
         </div>

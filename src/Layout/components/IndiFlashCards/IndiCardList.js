@@ -12,10 +12,8 @@ import { deleteCard } from "../../../utils/api";
 ============================== */
 
 function IndiCardList({ cardsArray }) {
-    const { deckId } = useParams();
-    const { cardId } = useParams();
+    const { deckId, cardId } = useParams();
     const history = useHistory();
- 
 
 
     async function handleDelete(card) {
@@ -27,10 +25,8 @@ function IndiCardList({ cardsArray }) {
         }
       }
 
-
       
 // ============== UI Paint  ===================
-
   return (
     <div className="col">
     <header>

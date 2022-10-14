@@ -21,7 +21,6 @@ function Deck() {
   const [indiDecks, setIndiDecks] = useState([]);
   const { deckId } = useParams();
 
-
   // useEffect
   useEffect(() => {
     const controller = new AbortController();
