@@ -27,9 +27,11 @@ function EditCard() {
 
   const [deck, setDeck] = useState({name: "", description: "", id: "", cards: []});
   const [card, setCard] = useState(initalForm);
-  const { cardId, deckId } = useParams();
+  //const { cardId, deckId } = useParams();
   const history = useHistory();
-  
+  const params = useParams();
+  const deckId = params.deckId;
+  const cardId = params.cardId;
 
 //** Fetch DECK Data
 useEffect(() => {
@@ -52,23 +54,18 @@ useEffect(() => {
 
   const cardInfo = async () => {
     const response = await readCard(cardId, controller.signal);
-    setCard(() => response);
+    setCard(response);
   };
   cardInfo();
   return () => controller.abort();
 }, [cardId]);
 
 
-
-
-
-
-
-//Changes front of card
+//** Text Changes FRONT of card
 function handleFrontCardChange(event) {
   setCard({ ...card, front: event.target.value })
 }
-//Changes back of card
+//** Text Changes BACK of card
 function handleBackCardChange(event) {
   setCard({ ...card, back: event.target.value })
 }
@@ -79,7 +76,7 @@ function handleBackCardChange(event) {
 //   event.preventDefault();
 //   updateCard(card)
 //       .then((result) => {
-//           history.push(`/decks/${deckId}`);
+//           histo4ry.push(`/decks/${deckId}`);
 //       });
 // }
 
@@ -142,7 +139,7 @@ function handleBackCardChange(event) {
         <div>
           <label htmlFor="back">Back</label>
           <textarea
-            id="back"
+            id="back" 
             type="textarea"
             name="back"
             rows="3"
@@ -157,7 +154,6 @@ function handleBackCardChange(event) {
         <button onClick={handleSubmit} className="btn btn-primary">Save</button>  
       </form>
     </div>
-  {/* delete this point above */}
         {/* <FormEditCard deck={deck} /> */}
       </div>
     </div>
