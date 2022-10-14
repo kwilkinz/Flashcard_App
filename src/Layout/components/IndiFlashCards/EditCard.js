@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 // import FormEditCard from "./FormEditCard";
-import { updateCard, readCard, readDeck } from "../../../utils/api/index";
+import { updateCard, readDeck, readCard } from "../../../utils/api/index";
 import { useParams, useHistory } from "react-router-dom";
+
 
 /* ===========================
 *            Parent : Home.js
@@ -31,59 +32,57 @@ function EditCard() {
   
 
 //** Fetch DECK Data
-  useEffect(() => {
-    const controller = new AbortController();
+useEffect(() => {
+  const abortController = new AbortController();
+  async function fetchDeckData() {
+      const response = await readDeck(deckId, abortController.signal);
+      setDeck(response);
+  }
+  fetchDeckData();
+  return () => {
+      abortController.abort();
+  }
+}, [deckId]);
 
-    const fetchEditDeck = async () => {
-      try {
-        const response = await readDeck(deckId, controller.signal);
-        setDeck(response);
-      } catch (error) {
-        console.log(`Edit Decks -> ${error}`);
-      }
-      return () => {
-        controller.abort();
-      };
-    };
-    fetchEditDeck();
-  }, [deckId]);
-  //console.log(deckId)
   //console.log(deck.cards) // gets all the cards (3) Array
 
 // ** Fetch CARD Data
 useEffect(() => {
-    const controller = new AbortController();
+  const controller = new AbortController();
 
-    const fetchCardData = async() => {
-        try {
-            const responseCard = await readCard(cardId, controller.signal);
-            setCard(responseCard)
-        } catch (error) {
-            console.log(`FormEditCard ${error}`)
-        }
-        return () => {
-          controller.abort();
-        };
-      };
-      fetchCardData();
+  const cardInfo = async () => {
+    const response = await readCard(cardId, controller.signal);
+    setCard(() => response);
+  };
+  cardInfo();
+  return () => controller.abort();
 }, [cardId]);
 
 
-//** Text input Change FRONT
-  const handleFrontCardChange = ({ target }) => {
-    setCard({
-      ...card,
-      front: target.value,
-    });
-  };
 
-//** Text input Change BACK
-  const handleBackCardChange = ({ target }) => {
-    setCard({
-      ...card,
-      back: target.value,
-    });
-  };
+
+
+
+
+//Changes front of card
+function handleFrontCardChange(event) {
+  setCard({ ...card, front: event.target.value })
+}
+//Changes back of card
+function handleBackCardChange(event) {
+  setCard({ ...card, back: event.target.value })
+}
+
+
+
+// function handleSubmit(event) {
+//   event.preventDefault();
+//   updateCard(card)
+//       .then((result) => {
+//           history.push(`/decks/${deckId}`);
+//       });
+// }
+
 
 //** Handle On Submit (save btn)
   const handleSubmit = async (event) => {
