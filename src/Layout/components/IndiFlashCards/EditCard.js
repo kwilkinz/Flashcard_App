@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-// import FormEditCard from "./FormEditCard";
+import FormEditCard from "./FormEditCard";
 import { updateCard, readDeck, readCard } from "../../../utils/api/index";
 import { useParams, useHistory } from "react-router-dom";
 
@@ -28,9 +28,9 @@ function EditCard() {
   const [deck, setDeck] = useState({name: "", description: "", id: "", cards: []});
   const [card, setCard] = useState(initalForm);
   const history = useHistory();
-  const params = useParams();
-  const deckId = params.deckId;
-  const cardId = params.cardId;
+  const {deckId, cardId} = useParams();
+  
+
 
 //** Fetch DECK Data
 useEffect(() => {
@@ -45,7 +45,6 @@ useEffect(() => {
   }
 }, [deckId]);
 
-  //console.log(deck.cards) // gets all the cards (3) Array
 
 // ** Fetch CARD Data
 useEffect(() => {
@@ -64,20 +63,12 @@ useEffect(() => {
 function handleFrontCardChange(event) {
   setCard({ ...card, front: event.target.value })
 }
+
+
 //** Text Changes BACK of card
 function handleBackCardChange(event) {
   setCard({ ...card, back: event.target.value })
 }
-
-
-
-// function handleSubmit(event) {
-//   event.preventDefault();
-//   updateCard(card)
-//       .then((result) => {
-//           histo4ry.push(`/decks/${deckId}`);
-//       });
-// }
 
 
 //** Handle On Submit (save btn)
@@ -86,15 +77,6 @@ function handleBackCardChange(event) {
     await updateCard(card)
     history.push(`/decks/${deckId}`);
   };
-
-//** Function is it the Front OR Back
-  function cardFront() {
-    return card.front ? card.front : "";
-  }
-
-  function cardBack() {
-    return card.back ? card.back : "";
-  }
 
 
 
@@ -117,43 +99,14 @@ function handleBackCardChange(event) {
         <h2>Edit Card</h2>
       </div>
 
-      <div>
-      <form>
-        <div>
-          <br />
-          <label htmlFor="front">Front</label>
-          <textarea
-            id="front"
-            type="textarea"
-            name="front"
-            rows="3"
-            onChange={handleFrontCardChange}
-            value={cardFront()}
-            placeholder="Front side of Card"
-            style={{ width: "100%" }}
+      
+        <FormEditCard 
+          deck={deck}
+          card={card}
+          handleFrontCardChange={handleFrontCardChange}
+          handleBackCardChange={handleBackCardChange}
+          handleSubmit={handleSubmit}
           />
-        </div>
-        <br />
-
-        <div>
-          <label htmlFor="back">Back</label>
-          <textarea
-            id="back" 
-            type="textarea"
-            name="back"
-            rows="3"
-            onChange={handleBackCardChange}
-            value={cardBack()}
-            style={{ width: "100%" }}
-            placeholder="Back side of Card"
-          />
-        </div>
-
-        <Link to={`/decks/${deckId}`} className="btn btn-secondary mr-2">Cancel</Link>
-        <button onClick={handleSubmit} className="btn btn-primary">Save</button>  
-      </form>
-    </div>
-        {/* <FormEditCard deck={deck} /> */}
       </div>
     
   );
