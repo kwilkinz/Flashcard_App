@@ -19,13 +19,12 @@ function Layout() {
     <div>
       <Header />
       <div className="container">
-        {/* Ref App() all routes here */}
         <Switch>
           <Route exact path="/" >
             <Home />
           </Route>
 
-          <Route path={`/decks/new`} >
+          <Route exact path={`/decks/new`} >
             <CreateDeck />
           </Route>
 

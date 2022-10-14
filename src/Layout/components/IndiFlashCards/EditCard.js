@@ -27,7 +27,6 @@ function EditCard() {
 
   const [deck, setDeck] = useState({name: "", description: "", id: "", cards: []});
   const [card, setCard] = useState(initalForm);
-  //const { cardId, deckId } = useParams();
   const history = useHistory();
   const params = useParams();
   const deckId = params.deckId;
@@ -118,7 +117,7 @@ function handleBackCardChange(event) {
         <h2>Edit Card</h2>
       </div>
 
-      <div><div>
+      <div>
       <form>
         <div>
           <br />
@@ -156,7 +155,7 @@ function handleBackCardChange(event) {
     </div>
         {/* <FormEditCard deck={deck} /> */}
       </div>
-    </div>
+    
   );
 }
 

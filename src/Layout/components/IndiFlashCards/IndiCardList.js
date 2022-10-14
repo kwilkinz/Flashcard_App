@@ -12,7 +12,7 @@ import { deleteCard } from "../../../utils/api";
 ============================== */
 
 function IndiCardList({ cardsArray }) {
-    const { deckId, cardId } = useParams();
+    const { deckId } = useParams();
     const history = useHistory();
 
 
@@ -44,7 +44,7 @@ function IndiCardList({ cardsArray }) {
               <div className="col-6">
                 <p className="card-text">{singlecard.back}</p>
                 <button onClick={() => handleDelete(singlecard)} className="btn btn-danger ml-2 float-right">Delete</button>
-                <Link to={`/decks/${deckId}/cards/${cardId}/edit`} className="btn btn-secondary float-right">Edit</Link>
+                <Link to={`/decks/${deckId}/cards/${singlecard.id}/edit`} className="btn btn-secondary float-right">Edit</Link>
               </div>
             </div>
           </div>

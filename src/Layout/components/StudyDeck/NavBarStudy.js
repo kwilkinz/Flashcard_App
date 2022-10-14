@@ -25,7 +25,7 @@ function NavBarStudy({ deckId, deck }) {
           <li className="breadcrumb-item">
             <Link to={`/decks/${deckId}`}>{deck.name}</Link>
           </li>
-          <li class="breadcrumb-item active" aria-current="page">
+          <li className="breadcrumb-item active" aria-current="page">
             Study
           </li>
         </ol>

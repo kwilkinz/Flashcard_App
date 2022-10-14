@@ -74,12 +74,12 @@ function CreateDeck() {
             </div>
 
             <Link to={"/"} 
-              class="btn btn-secondary mr-3"
+              className="btn btn-secondary mr-3"
               >
               Cancel
             </Link>
             <button
-              class="btn btn-primary"
+              className="btn btn-primary"
               type="submit"
               onClick={handleSubmit}
             >
