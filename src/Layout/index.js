@@ -3,12 +3,12 @@ import { Switch, Route } from "react-router-dom";
 
 import Header from "./Header";
 import Home from "./Home";
-import Study from "./Components/StudyDeck/Study";
-import CreateDeck from "./Components/CreateDeck/CreateDeck"
-import Deck from "./Components/IndiFlashCards/Deck";
-import EditDeck from "./Components/IndiFlashCards/EditDeck";
-import EditCard from "./Components/IndiFlashCards/EditCard";
-import AddCard from "./Components/IndiFlashCards/AddCard";
+import Study from "./components/StudyDeck/Study";
+import CreateDeck from "./components/CreateDeck/CreateDeck"
+import Deck from "./components/IndiFlashCards/Deck";
+import EditDeck from "./components/IndiFlashCards/EditDeck";
+import EditCard from "./components/IndiFlashCards/EditCard";
+import AddCard from "./components/IndiFlashCards/AddCard";
 // import edit deck capabilities
 import NotFound from "./NotFound";
 
