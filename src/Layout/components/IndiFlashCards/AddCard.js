@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { readDeck } from "../../../utils/api";
-import FormAddCard from "./FormAddCard";
+import FormCards from "./FormCards";
+import { createCard } from "../../../utils/api";
+import { useHistory } from "react-router-dom";
 /* ===========================
 *            Parent : Home.js
 *            SubParent: Deck.js 
-*           Children:  FormAddCard
+*           Children:  Form using: FormCards
 *              Displays ....  
 
 *  + Allows user to add to the existing deck
@@ -16,8 +18,19 @@ import FormAddCard from "./FormAddCard";
 ============================== */
 
 function AddCard() {
+
+  const initalForm = {
+    front: "",
+    back: "",
+    deckId: "",
+    id: "",
+  };
+
   const { deckId } = useParams();
   const [card, setCard] = useState([]);
+  const [formData, setFormData] = useState(initalForm)
+  const controller = new AbortController();
+  const history = useHistory();
   
   useEffect(() => {
       const controller = new AbortController();
@@ -37,6 +50,21 @@ function AddCard() {
   }, [deckId]);
 
 
+    // Handle Text Change
+    const handleTextChange = ({ target }) => {
+      setFormData({
+        ...formData,
+        [target.name]: target.value,
+      });
+    };
+  
+    const handleSubmit = async(event) => {
+        event.preventDefault();
+        await createCard(deckId, formData, controller.signal)
+        setFormData({...initalForm})
+        history.go(0)
+    }
+
   return (
     <div>
       <nav aria-label="breadcrumb">
@@ -47,14 +75,18 @@ function AddCard() {
           <li className="breadcrumb-item">
             <Link to={`/decks/${deckId}`}>{card.name}</Link>
           </li>
-          <li class="breadcrumb-item active" aria-current="page">
+          <li className="breadcrumb-item active" aria-current="page">
             Add Card
           </li>
         </ol>
       </nav>
 
       <div>
-          <FormAddCard card={card} setCard={setCard}/>
+          <FormCards 
+            handleTextChange={handleTextChange}  
+            formData={formData}
+            handleSubmit={handleSubmit}
+          />
       </div> 
     </div>
   );

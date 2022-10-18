@@ -11,19 +11,9 @@ import { Link } from "react-router-dom";
 *  + using the form 
 *  +
 ============================== */
-function FormEditCard({ card, handleFrontCardChange, handleBackCardChange, handleSubmit }) {
+function FormEditCard({ handleTextChange, formData, handleSubmit }) {
   
     const {deckId} = useParams();
-
-
-    //** Function is it the Front OR Back
-  function cardFront() {
-    return card.front ? card.front : "";
-  }
-
-  function cardBack() {
-    return card.back ? card.back : "";
-  }
   
     return (
     <div>
@@ -36,8 +26,8 @@ function FormEditCard({ card, handleFrontCardChange, handleBackCardChange, handl
             type="textarea"
             name="front"
             rows="3"
-            onChange={handleFrontCardChange}
-            value={cardFront()}
+            onChange={handleTextChange}
+            value={formData.front}
             placeholder="Front side of Card"
             style={{ width: "100%" }}
           />
@@ -51,8 +41,8 @@ function FormEditCard({ card, handleFrontCardChange, handleBackCardChange, handl
             type="textarea"
             name="back"
             rows="3"
-            onChange={handleBackCardChange}
-            value={cardBack()}
+            onChange={handleTextChange}
+            value={formData.back}
             style={{ width: "100%" }}
             placeholder="Back side of Card"
           />

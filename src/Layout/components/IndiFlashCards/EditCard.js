@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import FormEditCard from "./FormEditCard";
+import FormCards from "./FormCards";
 import { updateCard, readDeck, readCard } from "../../../utils/api/index";
 import { useParams, useHistory } from "react-router-dom";
 
@@ -27,6 +27,7 @@ function EditCard() {
 
   const [deck, setDeck] = useState({name: "", description: "", id: "", cards: []});
   const [card, setCard] = useState(initalForm);
+  const [formData, setFormData] = useState(initalForm)
   const history = useHistory();
   const {deckId, cardId} = useParams();
   
@@ -53,28 +54,25 @@ useEffect(() => {
   const cardInfo = async () => {
     const response = await readCard(cardId, controller.signal);
     setCard(response);
+    setFormData(response)
   };
   cardInfo();
   return () => controller.abort();
 }, [cardId]);
 
 
-//** Text Changes FRONT of card
-function handleFrontCardChange(event) {
-  setCard({ ...card, front: event.target.value })
-}
-
-
-//** Text Changes BACK of card
-function handleBackCardChange(event) {
-  setCard({ ...card, back: event.target.value })
+//** Text Changes
+function handleTextChange({target}) {
+  setFormData({...formData, 
+  [target.name]: target.value,
+  })
 }
 
 
 //** Handle On Submit (save btn)
   const handleSubmit = async (event) => {
     event.preventDefault();
-    await updateCard(card)
+    await updateCard({...card, front: formData.front, back: formData.back})
     history.push(`/decks/${deckId}`);
   };
 
@@ -100,11 +98,11 @@ function handleBackCardChange(event) {
       </div>
 
       
-        <FormEditCard 
+        <FormCards 
           deck={deck}
           card={card}
-          handleFrontCardChange={handleFrontCardChange}
-          handleBackCardChange={handleBackCardChange}
+          handleTextChange={handleTextChange}
+          formData={formData}
           handleSubmit={handleSubmit}
           />
       </div>

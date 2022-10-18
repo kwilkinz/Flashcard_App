@@ -1,7 +1,7 @@
 {
   "decks": [
     {
-      "name": "  React Router ",
+      "name": "  React Router",
       "description": "  React Router is a collection of navigational components that compose declaratively with your application.",
       "id": 2
     },
@@ -24,7 +24,7 @@
   "cards": [
     {
       "front": "What path will match the follow Route?\n<Route>\n  <NotFound />\n</Route>",
-      "back": "All paths. A route with no path matches all URL's.",
+      "back": "All paths. A route with no path matches all URL's. ",
       "deckId": 2,
       "id": 4
     },
@@ -45,6 +45,12 @@
       "back": "Back of flashcard 1",
       "deckId": 9,
       "id": 7
+    },
+    {
+      "front": "This Works",
+      "back": "Yes@!",
+      "deckId": 2,
+      "id": 8
     }
   ]
 }
